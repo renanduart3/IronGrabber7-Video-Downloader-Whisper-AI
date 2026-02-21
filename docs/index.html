@@ -3,80 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@1.8.0/dist/tailwind.min.css" rel="stylesheet">
-    <title>Video Downloader</title>
+    <title>IronGrabber7 - Local AI Extractor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f1115; color: #f3f4f6; }
+        .neon-red { color: #ef4444; text-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
+    </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="font-sans antialiased">
 
-    <main class="container mx-auto p-5">
-        <section id="video" class="mb-10">
-            <h2 class="text-2xl font-bold mb-5">Video Download</h2>
-            <!-- Existing video section content goes here -->
-        </section>
+    <header class="border-b border-gray-800 p-4 flex justify-between items-center bg-[#161b22] sticky top-0 z-50">
+        <div class="text-2xl font-bold tracking-tighter neon-red">IRONGRABBER7</div>
+        <div class="flex gap-2">
+            <button onclick="setLang('en')" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm font-bold border border-gray-600">EN</button>
+            <button onclick="setLang('pt')" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm font-bold border border-gray-600">PT</button>
+            <button onclick="setLang('es')" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm font-bold border border-gray-600">ES</button>
+        </div>
+    </header>
 
-        <!-- New Screenshots Placeholder Section -->
-        <section id="screenshots" class="mb-10">
-            <h2 class="text-2xl font-bold mb-5">Screenshots</h2>
-            <div class="grid grid-cols-3 gap-4">
-                <div class="bg-gray-800 p-4 rounded-lg">
-                    <img src="path/to/screenshot1.png" alt="Screenshot 1" class="rounded-lg mb-2">
-                    <p>Screenshot 1 Caption</p>
-                </div>
-                <div class="bg-gray-800 p-4 rounded-lg">
-                    <img src="path/to/screenshot2.png" alt="Screenshot 2" class="rounded-lg mb-2">
-                    <p>Screenshot 2 Caption</p>
-                </div>
-                <div class="bg-gray-800 p-4 rounded-lg">
-                    <img src="path/to/screenshot3.png" alt="Screenshot 3" class="rounded-lg mb-2">
-                    <p>Screenshot 3 Caption</p>
-                </div>
-                <div class="bg-gray-800 p-4 rounded-lg">
-                    <img src="path/to/screenshot4.png" alt="Screenshot 4" class="rounded-lg mb-2">
-                    <p>Screenshot 4 Caption</p>
-                </div>
-                <div class="bg-gray-800 p-4 rounded-lg">
-                    <img src="path/to/screenshot5.png" alt="Screenshot 5" class="rounded-lg mb-2">
-                    <p>Screenshot 5 Caption</p>
-                </div>
-                <div class="bg-gray-800 p-4 rounded-lg">
-                    <img src="path/to/screenshot6.png" alt="Screenshot 6" class="rounded-lg mb-2">
-                    <p>Screenshot 6 Caption</p>
-                </div>
-            </div>
-        </section>
+    <section class="max-w-5xl mx-auto px-6 py-20 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight" data-i18n="hero_title"></h1>
+        <p class="text-xl text-gray-400 mb-10 max-w-3xl mx-auto" data-i18n="hero_sub"></p>
 
-        <section id="features" class="mb-10">
-            <h2 class="text-2xl font-bold mb-5">Additional Features</h2>
-            <div class="bg-gray-800 p-4 rounded-lg mb-4">
-                <h3 class="font-bold">Download from many sites</h3>
-            </div>
-            <div class="bg-gray-800 p-4 rounded-lg mb-4">
-                <h3 class="font-bold">Download Playlists/Channels/Pages</h3>
-            </div>
-            <div class="bg-gray-800 p-4 rounded-lg mb-4">
-                <h3 class="font-bold">HD/4K and Formats</h3>
-            </div>
-            <div class="bg-gray-800 p-4 rounded-lg mb-4">
-                <h3 class="font-bold">Instagram Transcription + AI Analysis</h3>
-            </div>
-            <div class="bg-gray-800 p-4 rounded-lg mb-4">
-                <h3 class="font-bold">Script Creation/Adaptation from Transcriptions</h3>
-            </div>
-            <div class="bg-gray-800 p-4 rounded-lg mb-4">
-                <h3 class="font-bold">Whisper Model Sizes Accuracy</h3>
-            </div>
-            <div class="bg-gray-800 p-4 rounded-lg mb-4">
-                <h3 class="font-bold">Timestamp Cutting to Avoid Downloading Whole Videos</h3>
-            </div>
-        </section>
+        <!-- PAYMENT BUTTONS DISABLED FOR NOW -->
+        <div id="btn-en" class="hidden"></div>
+        <div id="btn-pt" class="hidden"></div>
+        <div id="btn-es" class="hidden"></div>
 
-        <!-- Hiding the payment buttons -->
-        <div class="hidden">
-            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                Payment Button
-            </button>
+        <p class="text-sm text-gray-500 mt-6" data-i18n="cta_note"></p>
+    </section>
+
+    <!-- Core feature cards -->
+    <section class="max-w-6xl mx-auto px-6 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-[#161b22] p-6 rounded-lg border border-gray-700">
+                <h3 class="text-xl font-bold text-white mb-3" data-i18n="f1_title"></h3>
+                <p class="text-gray-400 text-sm" data-i18n="f1_desc"></p>
+            </div>
+            <div class="bg-[#161b22] p-6 rounded-lg border border-gray-700">
+                <h3 class="text-xl font-bold text-white mb-3" data-i18n="f2_title"></h3>
+                <p class="text-gray-400 text-sm" data-i18n="f2_desc"></p>
+            </div>
+            <div class="bg-[#161b22] p-6 rounded-lg border border-gray-700">
+                <h3 class="text-xl font-bold text-white mb-3" data-i18n="f3_title"></h3>
+                <p class="text-gray-400 text-sm" data-i18n="f3_desc"></p>
+            </div>
+            <div class="bg-[#161b22] p-6 rounded-lg border border-red-900 shadow-[0_0_15px_rgba(239,68,68,0.1)]">
+                <h3 class="text-xl font-bold text-red-400 mb-3" data-i18n="f4_title"></h3>
+                <p class="text-gray-400 text-sm" data-i18n="f4_desc"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra "balloon" features -->
+    <section class="max-w-6xl mx-auto px-6 pb-20">
+        <div class="flex items-center justify-center mb-10">
+            <div class="text-3xl font-extrabold tracking-tight">
+                <span class="neon-red" data-i18n="more_title"></span>
+            </div>
         </div>
 
-    </main>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
+                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x1_title"></div>
+                <div class="text-gray-400 text-sm" data-i18n="x1_desc"></div>
+            </div>
+
+            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
+                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x2_title"></div>
+                <div class="text-gray-400 text-sm" data-i18n="x2_desc"></div>
+            </div>
+
+            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
+                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x3_title"></div>
+                <div class="text-gray-400 text-sm" data-i18n="x3_desc"></div>
+            </div>
+
+            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
+                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x4_title"></div>
+                <div class="text-gray-400 text-sm" data-i18n="x4_desc"></div>
+            </div>
+
+            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
+                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x5_title"></div>
+                <div class="text-gray-400 text-sm" data-i18n="x5_desc"></div>
+            </div>
+
+            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
+                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x6_title"></div>
+                <div class="text-gray-400 text-sm" data-i18n="x6_desc"></div>
+            </div>
+
+            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition lg:col-span-3">
+                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x7_title"></div>
+                <div class="text-gray-400 text-sm" data-i18n="x7_desc"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 pb-20">
+        <div class="aspect-w-16 aspect-h-9 bg-black rounded-xl overflow-hidden border border-gray-700 shadow-2xl">
+            <iframe width="100%" height="500" src="https://www.youtube.com/embed/SEU_VIDEO_ID" title="IronGrabber7 Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Screenshots section (below video) -->
+    <section class="max-w-6xl mx-auto px-6 pb-24">
+        <div class="flex items-center justify-between gap-4 mb-10">
+            <div class="text-3xl font-extrabold tracking-tight">
+                <span class="neon-red" data-i18n="shots_title"></span>
+            </div>
+            <div class="text-sm text-gray-500" data-i18n="shots_sub"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Replace src with your real screenshots in docs/img/ -->
+            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
+                <div class="bg-black/40">
+                    <img src="img/screen-01.png" alt="Screenshot 01" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                </div>
+                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot1"></figcaption>
+            </figure>
+
+            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
+                <div class="bg-black/40">
+                    <img src="img/screen-02.png" alt="Screenshot 02" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                </div>
+                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot2"></figcaption>
+            </figure>
+
+            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
+                <div class="bg-black/40">
+                    <img src="img/screen-03.png" alt="Screenshot 03" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                </div>
+                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot3"></figcaption>
+            </figure>
+
+            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
+                <div class="bg-black/40">
+                    <img src="img/screen-04.png" alt="Screenshot 04" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                </div>
+                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot4"></figcaption>
+            </figure>
+
+            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
+                <div class="bg-black/40">
+                    <img src="img/screen-05.png" alt="Screenshot 05" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                </div>
+                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot5"></figcaption>
+            </figure>
+
+            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
+                <div class="bg-black/40">
+                    <img src="img/screen-06.png" alt="Screenshot 06" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                </div>
+                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot6"></figcaption>
+            </figure>
+        </div>
+
+        <div class="hidden" data-i18n="shots_ph"></div>
+    </section>
+
+    <script>
+        const dict = {
+            'en': {
+                'hero_title': 'Extract & Transcribe.<br><span class="text-red-500">Zero Cloud. Zero Subscriptions.</span>',
+                'hero_sub': 'Stop renting tools. IronGrabber7 is a brutal desktop extractor powered by local Whisper AI. Rip private media, auto-transcribe offline, and slice audio surgically. You own the software, period.',
+                'cta_note': 'Demo and payment links will be added here later.',
+
+                'f1_title': '🧠 Local Whisper AI',
+                'f1_desc': 'Transcribe any video/audio directly on your hardware. No cloud limits, no data harvesting. It just works offline.',
+                'f2_title': '✂️ Surgical Cuts',
+                'f2_desc': 'Don\'t download a 3-hour podcast for a 10-second clip. Input the timestamp, and we rip only what you need.',
+                'f3_title': '🍪 Cookie ByPass',
+                'f3_desc': 'Private Twitter videos? Age-restricted YouTube? If your Chrome browser can see it, IronGrabber7 can extract it.',
+                'f4_title': '💀 Pay Once. Own it.',
+                'f4_desc': 'The SaaS subscription model is a scam. Pay once, download the .exe, and run it on your machine until the end of time.',
+
+                'more_title': 'More features',
+                'x1_title': '🌐 Download from all sites',
+                'x1_desc': 'YouTube, Facebook, Instagram, Twitter/X, Vimeo and more.',
+                'x2_title': '📦 YouTube playlists & channels',
+                'x2_desc': 'Download entire playlists and channels. Also: Instagram pages in bulk — one click.',
+                'x3_title': '🎥 HD, 4K & formats',
+                'x3_desc': '720p, 1080p, 4K, 8K. Convert to MP3, MP4, AVI, FLV, WMV, 3GP, WEBM, MKV, WAV, AAC, M4A.',
+                'x4_title': '🧾 Instagram → transcribe → verify',
+                'x4_desc': 'Grab Instagram videos, transcribe the speech/text, and analyze with AI to validate whether the info is consistent.',
+                'x5_title': '🧠 Scripts from transcriptions',
+                'x5_desc': 'Generate scripts and adapt videos based on the transcription — faster content iteration.',
+                'x6_title': '🎛️ Whisper small & large models',
+                'x6_desc': 'Supports small and large Whisper models. Bigger model = higher transcription accuracy.',
+                'x7_title': '⏱️ Timestamp cuts (no full download)',
+                'x7_desc': 'Extract only a specific segment (start/end) and keep the maximum quality available at the source.',
+
+                'shots_title': 'Screenshots',
+                'shots_sub': 'Placeholders — replace with your real UI screenshots in docs/img/',
+                'shots_ph': 'Screenshot placeholder: upload an image to <span class="text-gray-300 font-semibold">docs/img/</span> and update the <span class="text-gray-300 font-semibold">img/screen-0X.png</span> path.',
+                'shot1': 'Downloader dashboard',
+                'shot2': 'Choose source + quality',
+                'shot3': 'Playlist / bulk mode',
+                'shot4': 'Whisper transcription',
+                'shot5': 'Timestamp cut (start/end)',
+                'shot6': 'Exports (MP3/MP4/...)'
+            },
+            'pt': {
+                'hero_title': 'Extraia & Transcreva.<br><span class="text-red-500">Sem Nuvem. Sem Mensalidades.</span>',
+                'hero_sub': 'Pare de alugar ferramentas. O IronGrabber7 é um extrator brutal para desktop movido por IA local (Whisper). Baixe mídias privadas, transcreva offline e corte áudio cirurgicamente. O software é seu, e ponto final.',
+                'cta_note': 'Demo e links de pagamento serão adicionados aqui depois.',
+
+                'f1_title': '🧠 IA Whisper Local',
+                'f1_desc': 'Transcreva qualquer vídeo/áudio direto no seu hardware. Sem limites de nuvem, sem roubo de dados. Processamento 100% offline.',
+                'f2_title': '✂️ Cortes Cirúrgicos',
+                'f2_desc': 'Não baixe um podcast de 3 horas por causa de 10 segundos. Digite o tempo de início/fim, e nós arrancamos só o que você precisa.',
+                'f3_title': '🍪 ByPass de Cookies',
+                'f3_desc': 'Vídeo privado no X/Twitter? YouTube +18? Se o seu navegador Chrome consegue ver logado, o IronGrabber7 consegue extrair.',
+                'f4_title': '💀 Pague Uma Vez. É Seu.',
+                'f4_desc': 'O modelo de assinaturas é um roubo. Pague uma vez, baixe o arquivo e rode na sua máquina para sempre.',
+
+                'more_title': 'Mais recursos',
+                'x1_title': '🌐 Baixe de todos os sites',
+                'x1_desc': 'Baixar do YouTube, Facebook, Instagram, Twitter/X, Vimeo e muito mais!',
+                'x2_title': '📦 Playlist / canais / páginas',
+                'x2_desc': 'Baixar todas as playlists e canais do YouTube. Baixar todas as páginas de Instagram. Tudo de uma vez em apenas um clique!',
+                'x3_title': '🎥 Qualidade HD e 4K',
+                'x3_desc': 'Baixar em 720p, 1080p, 4K e 8K. Converter para MP3, MP4, AVI, FLV, WMV, 3GP, WEBM, MKV, WAV, AAC, M4A.',
+                'x4_title': '🧾 Instagram → transcreva → analise com IA',
+                'x4_desc': 'Pegue vídeos do Instagram, transcreva o texto e analise com IAs para ver se as informações estão procedentes.',
+                'x5_title': '🧠 Roteiros com base na transcrição',
+                'x5_desc': 'Crie roteiros e adapte vídeos baseado nas transcrições — mais rápido pra produzir e melhorar conteúdo.',
+                'x6_title': '���️ Modelos Whisper pequenos e grandes',
+                'x6_desc': 'Suporte para modelos pequenos e grandes do Whisper: quanto maior o modelo, maior a precisão da transcrição.',
+                'x7_title': '⏱️ Corte por tempo (sem baixar tudo)',
+                'x7_desc': 'Informe o tempo (início/fim) para pegar uma parte específica do vídeo, sem baixar o vídeo inteiro — com a qualidade máxima disponível na fonte.',
+
+                'shots_title': 'Screenshots',
+                'shots_sub': 'Placeholders — troque pelos prints reais em docs/img/',
+                'shots_ph': 'Placeholder: faça upload em <span class="text-gray-300 font-semibold">docs/img/</span> e atualize o caminho <span class="text-gray-300 font-semibold">img/screen-0X.png</span>.',
+                'shot1': 'Dashboard do downloader',
+                'shot2': 'Fonte + qualidade',
+                'shot3': 'Modo playlist / massa',
+                'shot4': 'Transcrição Whisper',
+                'shot5': 'Corte por tempo (início/fim)',
+                'shot6': 'Exportações (MP3/MP4/...)'
+            },
+            'es': {
+                'hero_title': 'Extrae & Transcribe.<br><span class="text-red-500">Cero Nube. Cero Suscripciones.</span>',
+                'hero_sub': 'Deja de alquilar herramientas. IronGrabber7 es un extractor brutal de escritorio impulsado por IA local (Whisper). Descarga medios privados, transcribe offline y corta audio quirúrgicamente.',
+                'cta_note': 'Demo y enlaces de pago se añadirán aquí más tarde.',
+
+                'f1_title': '🧠 IA Whisper Local',
+                'f1_desc': 'Transcribe cualquier video/audio directamente en tu hardware. Sin límites de nube, sin recolección de datos. Funciona 100% offline.',
+                'f2_title': '✂️ Cortes Quirúrgicos',
+                'f2_desc': 'No descargues un podcast de 3 horas por un clip de 10 segundos. Ingresa el tiempo y arrancamos solo lo que necesitas.',
+                'f3_title': '🍪 ByPass de Cookies',
+                'f3_desc': '¿Videos privados en X/Twitter? ¿YouTube con restricción de edad? Si tu navegador puede verlo, IronGrabber7 puede extraerlo.',
+                'f4_title': '💀 Paga Una Vez. Tuyo Para Siempre.',
+                'f4_desc': 'El modelo de suscripción SaaS es una estafa. Paga una vez, descarga el ejecutable y ejecútalo en tu máquina hasta el fin de los tiempos.',
+
+                'more_title': 'Más funciones',
+                'x1_title': '🌐 Descarga de todos los sitios',
+                'x1_desc': 'YouTube, Facebook, Instagram, Twitter/X, Vimeo y mucho más.',
+                'x2_title': '📦 Playlists / canales / páginas',
+                'x2_desc': 'Descarga playlists y canales completos de YouTube. También páginas de Instagram en masa — un clic.',
+                'x3_title': '🎥 HD, 4K y formatos',
+                'x3_desc': '720p, 1080p, 4K, 8K. Convierte a MP3, MP4, AVI, FLV, WMV, 3GP, WEBM, MKV, WAV, AAC, M4A.',
+                'x4_title': '🧾 Instagram → transcribe → analiza con IA',
+                'x4_desc': 'Toma videos de Instagram, transcribe el contenido y analízalo con IA para verificar consistencia de la información.',
+                'x5_title': '🧠 Guiones desde transcripciones',
+                'x5_desc': 'Crea guiones y adapta videos basándote en la transcripción — iteración más rápida.',
+                'x6_title': '🎛️ Modelos Whisper pequeños y grandes',
+                'x6_desc': 'Soporta modelos pequeños y grandes de Whisper: modelo más grande = mayor precisión.',
+                'x7_title': '⏱️ Corte por tiempo (sin descargar todo)',
+                'x7_desc': 'Extrae solo un segmento (inicio/fin) manteniendo la máxima calidad disponible en la fuente.',
+
+                'shots_title': 'Capturas',
+                'shots_sub': 'Placeholders — reemplaza con tus capturas en docs/img/',
+                'shots_ph': 'Placeholder: sube imágenes a <span class="text-gray-300 font-semibold">docs/img/</span> y actualiza <span class="text-gray-300 font-semibold">img/screen-0X.png</span>.',
+                'shot1': 'Panel de descarga',
+                'shot2': 'Fuente + calidad',
+                'shot3': 'Modo playlist / masivo',
+                'shot4': 'Transcripción Whisper',
+                'shot5': 'Corte por tiempo (inicio/fin)',
+                'shot6': 'Exportaciones (MP3/MP4/...)'
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(dict[lang][key]) el.innerHTML = dict[lang][key];
+            });
+
+            // Payment buttons intentionally disabled for now.
+            document.getElementById('btn-en').classList.add('hidden');
+            document.getElementById('btn-pt').classList.add('hidden');
+            document.getElementById('btn-es').classList.add('hidden');
+        }
+
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang && userLang.includes('pt')) setLang('pt');
+        else if (userLang && userLang.includes('es')) setLang('es');
+        else setLang('en');
+    </script>
 </body>
 </html>
