@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IronGrabber7 - Local AI Extractor</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/">
+    <meta property="og:title" content="IronGrabber7 - Local AI Extractor">
+    <meta property="og:description" content="Extract media & transcribe offline with local Whisper AI. Zero subscriptions.">
+    <meta property="og:image" content="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/docs/img/open-graph.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/">
+    <meta name="twitter:title" content="IronGrabber7 - Local AI Extractor">
+    <meta name="twitter:description" content="Extract media & transcribe offline with local Whisper AI. Zero subscriptions.">
+    <meta name="twitter:image" content="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/docs/img/open-graph.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0f1115; color: #f3f4f6; }
@@ -13,7 +26,11 @@
 <body class="font-sans antialiased">
 
     <header class="border-b border-gray-800 p-4 flex justify-between items-center bg-[#161b22] sticky top-0 z-50">
-        <div class="text-2xl font-bold tracking-tighter neon-red">IRONGRABBER7</div>
+        <div class="flex items-center gap-3">
+            <img src="docs/img/iron1.png" alt="IronGrabber7 Logo" class="w-10 h-10 object-cover rounded-md shadow-[0_0_8px_rgba(239,68,68,0.6)]">
+            <div class="text-2xl font-bold tracking-tighter neon-red">IRONGRABBER7</div>
+        </div>
+        
         <div class="flex gap-2">
             <button onclick="setLang('en')" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm font-bold border border-gray-600">EN</button>
             <button onclick="setLang('pt')" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm font-bold border border-gray-600">PT</button>
@@ -25,7 +42,6 @@
         <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight" data-i18n="hero_title"></h1>
         <p class="text-xl text-gray-400 mb-10 max-w-3xl mx-auto" data-i18n="hero_sub"></p>
 
-        <!-- PAYMENT BUTTONS DISABLED FOR NOW -->
         <div id="btn-en" class="hidden"></div>
         <div id="btn-pt" class="hidden"></div>
         <div id="btn-es" class="hidden"></div>
@@ -33,7 +49,6 @@
         <p class="text-sm text-gray-500 mt-6" data-i18n="cta_note"></p>
     </section>
 
-    <!-- Core feature cards -->
     <section class="max-w-6xl mx-auto px-6 pb-20">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="bg-[#161b22] p-6 rounded-lg border border-gray-700">
@@ -55,7 +70,6 @@
         </div>
     </section>
 
-    <!-- Extra "balloon" features -->
     <section class="max-w-6xl mx-auto px-6 pb-20">
         <div class="flex items-center justify-center mb-10">
             <div class="text-3xl font-extrabold tracking-tight">
@@ -68,32 +82,26 @@
                 <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x1_title"></div>
                 <div class="text-gray-400 text-sm" data-i18n="x1_desc"></div>
             </div>
-
             <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
                 <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x2_title"></div>
                 <div class="text-gray-400 text-sm" data-i18n="x2_desc"></div>
             </div>
-
             <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
                 <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x3_title"></div>
                 <div class="text-gray-400 text-sm" data-i18n="x3_desc"></div>
             </div>
-
             <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
                 <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x4_title"></div>
                 <div class="text-gray-400 text-sm" data-i18n="x4_desc"></div>
             </div>
-
             <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
                 <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x5_title"></div>
                 <div class="text-gray-400 text-sm" data-i18n="x5_desc"></div>
             </div>
-
             <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
                 <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x6_title"></div>
                 <div class="text-gray-400 text-sm" data-i18n="x6_desc"></div>
             </div>
-
             <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition lg:col-span-3">
                 <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x7_title"></div>
                 <div class="text-gray-400 text-sm" data-i18n="x7_desc"></div>
@@ -107,7 +115,6 @@
         </div>
     </section>
 
-    <!-- Screenshots section (below video) -->
     <section class="max-w-6xl mx-auto px-6 pb-24">
         <div class="flex items-center justify-between gap-4 mb-10">
             <div class="text-3xl font-extrabold tracking-tight">
@@ -117,45 +124,39 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Replace src with your real screenshots in docs/img/ -->
             <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
                 <div class="bg-black/40">
-                    <img src="img/screen-01.png" alt="Screenshot 01" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                    <img src="docs/img/screen-01.png" alt="Screenshot 01" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
                 </div>
                 <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot1"></figcaption>
             </figure>
-
             <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
                 <div class="bg-black/40">
-                    <img src="img/screen-02.png" alt="Screenshot 02" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                    <img src="docs/img/screen-02.png" alt="Screenshot 02" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
                 </div>
                 <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot2"></figcaption>
             </figure>
-
             <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
                 <div class="bg-black/40">
-                    <img src="img/screen-03.png" alt="Screenshot 03" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                    <img src="docs/img/screen-03.png" alt="Screenshot 03" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
                 </div>
                 <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot3"></figcaption>
             </figure>
-
             <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
                 <div class="bg-black/40">
-                    <img src="img/screen-04.png" alt="Screenshot 04" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                    <img src="docs/img/screen-04.png" alt="Screenshot 04" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
                 </div>
                 <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot4"></figcaption>
             </figure>
-
             <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
                 <div class="bg-black/40">
-                    <img src="img/screen-05.png" alt="Screenshot 05" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                    <img src="docs/img/screen-05.png" alt="Screenshot 05" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
                 </div>
                 <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot5"></figcaption>
             </figure>
-
             <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
                 <div class="bg-black/40">
-                    <img src="img/screen-06.png" alt="Screenshot 06" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
+                    <img src="docs/img/screen-06.png" alt="Screenshot 06" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
                 </div>
                 <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot6"></figcaption>
             </figure>
@@ -164,7 +165,7 @@
         <div class="hidden" data-i18n="shots_ph"></div>
     </section>
 
-   <script>
+    <script>
         const dict = {
             'en': {
                 'hero_title': 'Extract & Transcribe.<br><span class="text-red-500">Zero Cloud. Zero Subscriptions.</span>',
@@ -242,7 +243,7 @@
                 'shot1': 'Dashboard do downloader',
                 'shot2': 'Fonte + qualidade',
                 'shot3': 'Modo playlist / massa',
-                'shot4': 'Transcrição Whisper',
+                'shot4': 'Transcripción Whisper',
                 'shot5': 'Corte por tempo (início/fim)',
                 'shot6': 'Exportações (MP3/MP4/...)'
             },
@@ -294,7 +295,6 @@
                 if(dict[lang][key]) el.innerHTML = dict[lang][key];
             });
 
-            // Botões de pagamento escondidos por enquanto, conforme seu HTML.
             document.getElementById('btn-en').classList.add('hidden');
             document.getElementById('btn-pt').classList.add('hidden');
             document.getElementById('btn-es').classList.add('hidden');
