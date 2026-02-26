@@ -466,8 +466,8 @@
             },
             'es': {
                 'whisper_badge': 'Ahora con Whisper v3 Integrado',
-                'buy_nav': 'Comprar — €14,00',
-                'hero_buy': 'Comprar IronGrabber7 — €14,00',
+                'buy_nav': 'Comprar — €12,69',
+                'hero_buy': 'Comprar IronGrabber7 — €12,69',
                 'hero_buy_note': 'Compra única — paga una vez y úsalo para siempre. Este es un producto digital. Si pierdes el archivo descargado, tendrás que comprarlo de nuevo :( — así que guárdalo en tu Google Drive o en algún lugar seguro jeje.',
                 'hero_title': 'Extrae & Transcribe.<br><span class="text-red-500">Cero Nube. Cero Suscripciones.</span>',
                 'hero_sub': 'Deja de alquilar herramientas. IronGrabber7 es un extractor brutal de escritorio impulsado por IA local (Whisper). Descarga medios privados, transcribe offline y corta audio quirúrgicamente.',
@@ -508,16 +508,16 @@
                 'cta_check1': 'Procesamiento Whisper AI Local (Sin Fuga de Datos)',
                 'cta_check2': 'Proxy & Cookie Bypass Integrado',
                 'cta_check3': 'Integración Directa con FFmpeg para Exportación',
-                'cta_buy': 'Comprar Licencia — €14,00',
+                'cta_buy': 'Comprar Licencia — €12,69',
             }
         };
 
         const baseUrl = "https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/";
 
         const buyLinks = {
-            'en': '#',  // Gumroad USD link here
+            'en': 'https://neonechoez.gumroad.com/l/uusgqg',
             'pt': '#',  // Kiwify BRL link here
-            'es': '#'   // Gumroad EUR link here
+            'es': 'https://neonechoez.gumroad.com/l/uusgqg'
         };
 
         function setLang(lang) {
@@ -541,6 +541,15 @@
             // Update buy links
             const heroLink = document.getElementById('hero-buy-link');
             if (heroLink) heroLink.href = buyLinks[lang] || '#';
+
+            // Update CTA button to open buy link
+            const ctaBtn = document.getElementById('cta-buy-btn');
+            if (ctaBtn) {
+                ctaBtn.onclick = function() {
+                    const link = buyLinks[lang] || '#';
+                    if (link !== '#') window.open(link, '_blank');
+                };
+            }
 
             // Update language button selected state
             document.querySelectorAll('.lang-btn').forEach(btn => {
