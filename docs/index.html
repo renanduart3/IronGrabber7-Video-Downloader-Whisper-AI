@@ -17,42 +17,145 @@
     <meta name="twitter:description" content="Extract media & transcribe offline with local Whisper AI. Zero subscriptions.">
     <meta name="twitter:image" content="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/open-graph-en.png">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0f1115; color: #f3f4f6; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e7eb;
+        }
         .neon-red { color: #ef4444; text-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
+        .brutal-card {
+            background-color: #141414;
+            border: 1px solid #262626;
+            transition: all 0.2s ease;
+        }
+        .brutal-card:hover {
+            border-color: #404040;
+            transform: translateY(-2px);
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, #ffffff 0%, #6b7280 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link {
+            transition: color 0.2s;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .nav-link:hover { color: #3b82f6; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-btn {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -75%;
+            width: 50%; height: 100%;
+            background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+        }
+        .glass-btn:hover::before { left: 125%; }
+        .glass-btn:hover {
+            box-shadow: 0 0 40px rgba(34, 197, 94, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+            transform: translateY(-1px);
+        }
+        .lang-btn-active {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: rgba(239, 68, 68, 0.5) !important;
+            color: #ef4444 !important;
+        }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#3b82f6",
+                        accent: "#ef4444",
+                        success: "#22c55e",
+                        dark: "#0a0a0a",
+                        "card-dark": "#141414",
+                        "border-dark": "#262626"
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    }
+                },
+            },
+        };
+    </script>
 </head>
-<body class="font-sans antialiased">
+<body class="antialiased overflow-x-hidden">
 
-    <header class="border-b border-gray-800 p-4 flex justify-between items-center bg-[#161b22] sticky top-0 z-50">
-        <div class="flex items-center gap-3">
-            <img src="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/iron1.png" alt="IronGrabber7 Logo" class="w-10 h-10 object-cover rounded-md shadow-[0_0_8px_rgba(239,68,68,0.6)]">
-            <div class="text-2xl font-bold tracking-tighter neon-red">IRONGRABBER7</div>
-        </div>
-        
-        <div class="flex gap-2">
-            <button onclick="setLang('en')" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm font-bold border border-gray-600">EN</button>
-            <button onclick="setLang('pt')" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm font-bold border border-gray-600">PT</button>
-            <button onclick="setLang('es')" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm font-bold border border-gray-600">ES</button>
+    <header class="border-b border-[#262626] bg-[#0a0a0a]/80 backdrop-blur-md sticky top-0 z-[100]">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 overflow-hidden rounded border border-[#262626]">
+                    <img src="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/iron1.png" alt="IronGrabber7 Logo" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-black text-2xl tracking-tighter uppercase italic leading-none">
+                        IronGrabber<span class="text-accent">7</span>
+                    </span>
+                    <span class="text-[10px] font-mono text-slate-500 tracking-[0.2em] uppercase">Enterprise Media Harvester</span>
+                </div>
+            </div>
+            <nav class="hidden lg:flex items-center space-x-10">
+                <a class="nav-link text-slate-300" href="#features">Features</a>
+                <a class="nav-link text-slate-300" href="#docs">Docs</a>
+                <a id="buy-nav" class="nav-link text-accent border border-accent/20 px-4 py-2 rounded hover:bg-accent/5" href="#cta" data-i18n="buy_nav">Buy — $15.00</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <div class="flex gap-1">
+                    <button onclick="setLang('en')" data-lang="en" class="lang-btn px-2 py-1 bg-white/5 hover:bg-white/10 rounded text-[10px] font-bold border border-white/10 text-slate-300 transition-all">EN</button>
+                    <button onclick="setLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 bg-white/5 hover:bg-white/10 rounded text-[10px] font-bold border border-white/10 text-slate-300 transition-all">PT</button>
+                    <button onclick="setLang('es')" data-lang="es" class="lang-btn px-2 py-1 bg-white/5 hover:bg-white/10 rounded text-[10px] font-bold border border-white/10 text-slate-300 transition-all">ES</button>
+                </div>
+                <div class="hidden sm:block px-3 py-1 bg-white/5 border border-white/10 rounded text-[10px] font-mono text-slate-400">
+                    STATUS: <span class="text-[#22c55e] uppercase">v7.2.4-STABLE</span>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="w-full py-16 overflow-hidden bg-[#0f1115]">
+    <section class="w-full py-16 overflow-hidden">
         <div class="max-w-5xl mx-auto px-6 text-center">
             
-            <div class="w-full max-w-4xl mx-auto mb-10 overflow-hidden rounded-xl border border-gray-800 shadow-[0_0_20px_rgba(0,0,0,0.8)]">
+            <div class="w-full max-w-4xl mx-auto mb-10 overflow-hidden rounded-xl border border-[#262626] shadow-[0_0_20px_rgba(0,0,0,0.8)]">
                 <img id="hero-img" src="" alt="IronGrabber7 Banner" class="w-full h-auto object-cover">
             </div>
 
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-8">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                </span>
+                <span class="text-[10px] font-bold text-accent uppercase tracking-widest" data-i18n="whisper_badge">Now with Whisper v3 Integration</span>
+            </div>
+
             <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight" data-i18n="hero_title"></h1>
-            <p class="text-xl text-gray-400 mb-10 max-w-3xl mx-auto" data-i18n="hero_sub"></p>
+            <p class="text-xl text-slate-400 mb-10 max-w-3xl mx-auto" data-i18n="hero_sub"></p>
 
-            <div id="btn-en" class="hidden"></div>
-            <div id="btn-pt" class="hidden"></div>
-            <div id="btn-es" class="hidden"></div>
-
-            <p class="text-sm text-gray-500 mt-6" data-i18n="cta_note"></p>
+            <a id="hero-buy-link" href="#" target="_blank" class="glass-btn inline-flex items-center gap-3 text-white font-black py-5 px-14 rounded-lg text-lg uppercase tracking-widest transition-all duration-300">
+                <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                <span data-i18n="hero_buy"></span>
+            </a>
+            <p class="text-xs text-slate-500 mt-5 max-w-xl mx-auto leading-relaxed" data-i18n="hero_buy_note"></p>
         </div>
     </section>
 
@@ -101,41 +204,92 @@
 
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 pb-20">
-        <div class="flex items-center justify-center mb-10">
-            <div class="text-3xl font-extrabold tracking-tight">
-                <span class="neon-red" data-i18n="more_title"></span>
+    <section id="features" class="max-w-7xl mx-auto px-6 pb-32">
+        <div class="flex items-center justify-center mb-12">
+            <div class="text-3xl font-extrabold tracking-tight uppercase">
+                <span class="hero-gradient" data-i18n="more_title"></span>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
-                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x1_title"></div>
-                <div class="text-gray-400 text-sm" data-i18n="x1_desc"></div>
+            <div class="brutal-card p-8 rounded-lg group">
+                <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors">
+                    <span class="material-symbols-outlined text-primary text-3xl">public</span>
+                </div>
+                <h3 class="text-xl font-black mb-4 uppercase tracking-tight" data-i18n="x1_title"></h3>
+                <p class="text-slate-400 text-sm leading-relaxed" data-i18n="x1_desc"></p>
             </div>
-            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
-                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x2_title"></div>
-                <div class="text-gray-400 text-sm" data-i18n="x2_desc"></div>
+
+            <div class="brutal-card p-8 rounded-lg group">
+                <div class="w-14 h-14 bg-accent/10 border border-accent/20 rounded flex items-center justify-center mb-8 group-hover:bg-accent/20 transition-colors">
+                    <span class="material-symbols-outlined text-accent text-3xl">playlist_add_check</span>
+                </div>
+                <h3 class="text-xl font-black mb-4 uppercase tracking-tight" data-i18n="x2_title"></h3>
+                <p class="text-slate-400 text-sm leading-relaxed" data-i18n="x2_desc"></p>
             </div>
-            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
-                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x3_title"></div>
-                <div class="text-gray-400 text-sm" data-i18n="x3_desc"></div>
+
+            <div class="brutal-card p-8 rounded-lg group">
+                <div class="w-14 h-14 bg-success/10 border border-success/20 rounded flex items-center justify-center mb-8 group-hover:bg-success/20 transition-colors">
+                    <span class="material-symbols-outlined text-success text-3xl">movie</span>
+                </div>
+                <h3 class="text-xl font-black mb-4 uppercase tracking-tight" data-i18n="x3_title"></h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="x3_desc"></p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-[9px] font-bold px-2 py-1 bg-white/5 border border-white/10 rounded uppercase">MP4</span>
+                    <span class="text-[9px] font-bold px-2 py-1 bg-white/5 border border-white/10 rounded uppercase">MKV</span>
+                    <span class="text-[9px] font-bold px-2 py-1 bg-white/5 border border-white/10 rounded uppercase">MP3</span>
+                    <span class="text-[9px] font-bold px-2 py-1 bg-white/5 border border-white/10 rounded uppercase">FLAC</span>
+                    <span class="text-[9px] font-bold px-2 py-1 bg-white/5 border border-white/10 rounded uppercase">4K</span>
+                    <span class="text-[9px] font-bold px-2 py-1 bg-white/5 border border-white/10 rounded uppercase">8K</span>
+                </div>
             </div>
-            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
-                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x4_title"></div>
-                <div class="text-gray-400 text-sm" data-i18n="x4_desc"></div>
+
+            <div class="brutal-card p-8 rounded-lg group">
+                <div class="w-14 h-14 bg-white/5 border border-white/10 rounded flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+                    <span class="material-symbols-outlined text-white text-3xl">analytics</span>
+                </div>
+                <h3 class="text-xl font-black mb-4 uppercase tracking-tight" data-i18n="x4_title"></h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="x4_desc"></p>
+                <div class="flex items-center text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-xs mr-2 text-success">verified</span> LLM Ready Export
+                </div>
             </div>
-            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
-                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x5_title"></div>
-                <div class="text-gray-400 text-sm" data-i18n="x5_desc"></div>
+
+            <div class="brutal-card p-8 rounded-lg group">
+                <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors">
+                    <span class="material-symbols-outlined text-primary text-3xl">edit_note</span>
+                </div>
+                <h3 class="text-xl font-black mb-4 uppercase tracking-tight" data-i18n="x5_title"></h3>
+                <p class="text-slate-400 text-sm leading-relaxed" data-i18n="x5_desc"></p>
             </div>
-            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition">
-                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x6_title"></div>
-                <div class="text-gray-400 text-sm" data-i18n="x6_desc"></div>
+
+            <div class="brutal-card p-8 rounded-lg group">
+                <div class="w-14 h-14 bg-accent/10 border border-accent/20 rounded flex items-center justify-center mb-8 group-hover:bg-accent/20 transition-colors">
+                    <span class="material-symbols-outlined text-accent text-3xl">graphic_eq</span>
+                </div>
+                <h3 class="text-xl font-black mb-4 uppercase tracking-tight" data-i18n="x6_title"></h3>
+                <p class="text-slate-400 text-sm leading-relaxed" data-i18n="x6_desc"></p>
             </div>
-            <div class="bg-[#161b22] p-6 rounded-xl border border-gray-700 hover:border-gray-500 transition lg:col-span-3">
-                <div class="text-sm font-bold text-red-400 mb-2" data-i18n="x7_title"></div>
-                <div class="text-gray-400 text-sm" data-i18n="x7_desc"></div>
+
+            <div class="brutal-card p-8 rounded-lg group lg:col-span-3 flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <div class="w-14 h-14 bg-success/10 border border-success/20 rounded flex items-center justify-center mb-8">
+                        <span class="material-symbols-outlined text-success text-3xl">content_cut</span>
+                    </div>
+                    <h3 class="text-xl font-black mb-4 uppercase tracking-tight" data-i18n="x7_title"></h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="x7_desc"></p>
+                </div>
+                <div class="flex-1 bg-black/60 rounded p-6 font-mono text-[10px] border border-white/5">
+                    <div class="flex justify-between mb-2 text-slate-500 border-b border-white/5 pb-2">
+                        <span>TRIM_ENGINE</span>
+                        <span class="text-success">ACTIVE</span>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex items-center"><span class="text-success mr-2">●</span> CMD: trim --start 00:04:12 --end 00:04:58</div>
+                        <div class="flex items-center"><span class="text-primary mr-2">●</span> Encoding segment... 87%</div>
+                        <div class="flex items-center"><span class="text-slate-600 mr-2">○</span> EXPORT: clip_segment.mp4</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -146,62 +300,87 @@
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 pb-24">
-        <div class="flex items-center justify-between gap-4 mb-10">
-            <div class="text-3xl font-extrabold tracking-tight">
-                <span class="neon-red" data-i18n="shots_title"></span>
+
+    <section id="cta" class="max-w-7xl mx-auto px-6 pb-20">
+        <div class="brutal-card rounded-none border-t-4 border-t-primary">
+            <div class="bg-[#1a1a1a] px-4 py-2 flex items-center justify-between border-b border-[#262626]">
+                <div class="flex space-x-1.5">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/30"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/30"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/30"></div>
+                </div>
+                <span class="text-[9px] font-mono font-bold tracking-[0.4em] text-slate-500 uppercase" data-i18n="sys_accel">System Hardware Acceleration Active</span>
             </div>
-            <div class="text-sm text-gray-500" data-i18n="shots_sub"></div>
+            <div class="p-10 md:p-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-black mb-8 italic uppercase tracking-tighter leading-none" data-i18n="cta_grab"></h2>
+                    <ul class="space-y-5 mb-10">
+                        <li class="flex items-center text-slate-400 text-sm">
+                            <span class="material-symbols-outlined text-success mr-4 text-base">task_alt</span>
+                            <span data-i18n="cta_check1"></span>
+                        </li>
+                        <li class="flex items-center text-slate-400 text-sm">
+                            <span class="material-symbols-outlined text-success mr-4 text-base">task_alt</span>
+                            <span data-i18n="cta_check2"></span>
+                        </li>
+                        <li class="flex items-center text-slate-400 text-sm">
+                            <span class="material-symbols-outlined text-success mr-4 text-base">task_alt</span>
+                            <span data-i18n="cta_check3"></span>
+                        </li>
+                    </ul>
+                    <button id="cta-buy-btn" class="w-full sm:w-auto bg-white text-[#0a0a0a] font-black py-4 px-12 hover:bg-slate-200 transition-colors uppercase tracking-widest text-xs" data-i18n="cta_buy"></button>
+                </div>
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+                    <div class="relative brutal-card p-6 bg-black border-white/10">
+                        <div class="flex items-center space-x-2 mb-6">
+                            <div class="w-2 h-2 rounded-full bg-success"></div>
+                            <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Processing Node #042</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="h-1 bg-white/5 w-full rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-3/4"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="h-12 bg-white/5 rounded border border-white/5"></div>
+                                <div class="h-12 bg-white/5 rounded border border-white/5"></div>
+                            </div>
+                            <div class="h-24 bg-white/5 rounded border border-white/5 font-mono text-[8px] p-2 text-slate-600 overflow-hidden">
+                                [LOG] Initializing engine...<br>
+                                [LOG] Loading local_whisper_v3.bin<br>
+                                [LOG] Buffer allocated: 2048MB<br>
+                                [LOG] Threading active: 16 cores
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
-                <div class="bg-black/40">
-                    <img src="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/screen-01.png" alt="Screenshot 01" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
-                </div>
-                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot1"></figcaption>
-            </figure>
-            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
-                <div class="bg-black/40">
-                    <img src="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/screen-02.png" alt="Screenshot 02" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
-                </div>
-                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot2"></figcaption>
-            </figure>
-            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
-                <div class="bg-black/40">
-                    <img src="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/screen-03.png" alt="Screenshot 03" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
-                </div>
-                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot3"></figcaption>
-            </figure>
-            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
-                <div class="bg-black/40">
-                    <img src="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/screen-04.png" alt="Screenshot 04" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
-                </div>
-                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot4"></figcaption>
-            </figure>
-            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
-                <div class="bg-black/40">
-                    <img src="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/screen-05.png" alt="Screenshot 05" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
-                </div>
-                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot5"></figcaption>
-            </figure>
-            <figure class="bg-[#161b22] rounded-xl border border-gray-700 overflow-hidden">
-                <div class="bg-black/40">
-                    <img src="https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/screen-06.png" alt="Screenshot 06" class="w-full h-56 object-cover opacity-90" onerror="this.style.display='none'; this.parentElement.classList.add('p-10'); this.parentElement.innerHTML='<div class=&quot;text-gray-500 text-sm&quot;>'+document.querySelector('[data-i18n=shots_ph]').innerHTML+'</div>';">
-                </div>
-                <figcaption class="p-4 text-sm text-gray-300" data-i18n="shot6"></figcaption>
-            </figure>
-        </div>
-
-        <div class="hidden" data-i18n="shots_ph"></div>
     </section>
+
+    <footer class="border-t border-[#262626] py-16 bg-black/50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex flex-wrap justify-center gap-8 mb-10 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                <a class="hover:text-white transition-colors" href="#">Terms of Use</a>
+                <a class="hover:text-white transition-colors" href="#">Privacy Protocol</a>
+                <a class="hover:text-white transition-colors" href="#">Repository</a>
+                <a class="hover:text-white transition-colors" href="#">Support Ticket</a>
+            </div>
+            <p class="text-[10px] font-mono text-slate-600 uppercase tracking-widest">
+                © 2024 IronGrabber Labs // Part of the Tactical Media Group
+            </p>
+        </div>
+    </footer>
 
     <script>
         const dict = {
             'en': {
+                'whisper_badge': 'Now with Whisper v3 Integration',
+                'buy_nav': 'Buy — $15.00',
+                'hero_buy': 'Get IronGrabber7 — $15.00',
+                'hero_buy_note': 'One-time purchase — pay once and use it forever. This is a digital product. If you lose the downloaded file, you\'ll need to purchase again :( — so save it to your Google Drive or somewhere safe hehe.',
                 'hero_title': 'Extract & Transcribe.<br><span class="text-red-500">Zero Cloud. Zero Subscriptions.</span>',
                 'hero_sub': 'Stop renting tools. IronGrabber7 is a brutal desktop extractor powered by local Whisper AI. Rip private media, auto-transcribe offline, and slice audio surgically. You own the software, period.',
-                'cta_note': 'Demo and payment links will be added here later.',
 
                 'f1_title': '🧠 Local Whisper AI',
                 'f1_desc': 'Transcribe any video/audio directly on your hardware. No cloud limits, no data harvesting. It just works offline.',
@@ -219,35 +398,33 @@
                 'pos_desc': 'Found a viral video in another language? Download it, force a Whisper transcription, and extract the exact script. Use the transcribed text to rewrite, adapt, and generate fresh content for your own channels seamlessly.',
 
                 'more_title': 'More features',
-                'x1_title': '🌐 Download from all sites',
+                'x1_title': 'Download from all sites',
                 'x1_desc': 'YouTube, Facebook, Instagram, Twitter/X, Vimeo and more.',
-                'x2_title': '📦 YouTube playlists & channels',
+                'x2_title': 'YouTube playlists & channels',
                 'x2_desc': 'Download entire playlists and channels. Also: Instagram pages in bulk — one click.',
-                'x3_title': '🎥 HD, 4K & formats',
+                'x3_title': 'HD, 4K & formats',
                 'x3_desc': '720p, 1080p, 4K, 8K. Convert to MP3, MP4, AVI, FLV, WMV, 3GP, WEBM, MKV, WAV, AAC, M4A.',
-                'x4_title': '🧾 Extract → Transcribe → Analyze',
+                'x4_title': 'Extract → Transcribe → Analyze',
                 'x4_desc': 'Grab videos from ANY social network, extract the exact speech, and feed it to external AIs to fact-check, summarize, or reverse-engineer your competitors.',
-                'x5_title': '🧠 Scripts from transcriptions',
+                'x5_title': 'Scripts from transcriptions',
                 'x5_desc': 'Generate scripts and adapt videos based on the transcription — faster content iteration.',
-                'x6_title': '🎛️ Whisper small & large models',
+                'x6_title': 'Whisper small & large models',
                 'x6_desc': 'Supports small and large Whisper models. Bigger model = higher transcription accuracy.',
-                'x7_title': '⏱️ Timestamp cuts (no full download)',
+                'x7_title': 'Timestamp cuts (no full download)',
                 'x7_desc': 'Extract only a specific segment (start/end) and keep the maximum quality available at the source.',
 
-                'shots_title': 'Screenshots',
-                'shots_sub': 'Placeholders — replace with your real UI screenshots in docs/img/',
-                'shots_ph': 'Screenshot placeholder: upload an image to <span class="text-gray-300 font-semibold">img/</span> and update the <span class="text-gray-300 font-semibold">img/screen-0X.png</span> path.',
-                'shot1': 'Downloader dashboard',
-                'shot2': 'Choose source + quality',
-                'shot3': 'Playlist / bulk mode',
-                'shot4': 'Whisper transcription',
-                'shot5': 'Timestamp cut (start/end)',
-                'shot6': 'Exports (MP3/MP4/...)'
+                'sys_accel': 'System Hardware Acceleration Active',
+                'cta_grab': 'Ready to <span class="text-accent underline decoration-4 underline-offset-8">Grab</span>?',
+                'cta_check1': 'Local Whisper AI Processing (No Data Leaks)',
+                'cta_check2': 'Proxy & Cookie Bypass Built-in',
+                'cta_check3': 'Direct FFmpeg Integration for Raw Export',
+                'cta_buy': 'Buy IronGrabber7 — $15.00',
             },
             'pt': {
-                'hero_title': 'Extraia & Transcreva.<br><span class="text-red-500">Sem Nuvem. Sem Mensalidades.</span>',
+                'whisper_badge': 'Agora com Whisper v3 Integrado',
+                'buy_nav': 'Comprar — R$77,00',                'hero_buy': 'Comprar IronGrabber7 — R$77,00',
+                'hero_buy_note': 'Compra única — pague uma vez e use para sempre. Este é um produto digital. Se você perder o arquivo que já baixou, vai precisar comprar novamente :( — então salve no seu Google Drive ou em algum outro lugar seguro hehe.',                'hero_title': 'Extraia & Transcreva.<br><span class="text-red-500">Sem Nuvem. Sem Mensalidades.</span>',
                 'hero_sub': 'Pare de alugar ferramentas. O IronGrabber7 é um extrator brutal para desktop movido por IA local (Whisper). Baixe mídias privadas, transcreva offline e corte áudio cirurgicamente. O software é seu, e ponto final.',
-                'cta_note': 'Demo e links de pagamento serão adicionados aqui depois.',
 
                 'f1_title': '🧠 IA Whisper Local',
                 'f1_desc': 'Transcreva qualquer vídeo/áudio direto no seu hardware. Sem limites de nuvem, sem roubo de dados. Processamento 100% offline.',
@@ -265,35 +442,35 @@
                 'pos_desc': 'Achou um vídeo viral? Baixe, mande o Whisper transcrever e tenha o roteiro completo em mãos. Use o texto gerado para reescrever, adaptar e alimentar a produção de conteúdo dos seus próprios canais de forma extremamente rápida.',
 
                 'more_title': 'Mais recursos',
-                'x1_title': '🌐 Baixe de todos os sites',
+                'x1_title': 'Baixe de todos os sites',
                 'x1_desc': 'Baixar do YouTube, Facebook, Instagram, Twitter/X, Vimeo e muito mais!',
-                'x2_title': '📦 Playlist / canais / páginas',
+                'x2_title': 'Playlist / canais / páginas',
                 'x2_desc': 'Baixar todas as playlists e canais do YouTube. Baixar todas as páginas de Instagram. Tudo de uma vez em apenas um clique!',
-                'x3_title': '🎥 Qualidade HD e 4K',
+                'x3_title': 'Qualidade HD e 4K',
                 'x3_desc': 'Baixar em 720p, 1080p, 4K e 8K. Converter para MP3, MP4, AVI, FLV, WMV, 3GP, WEBM, MKV, WAV, AAC, M4A.',
-                'x4_title': '🧾 Extraia → Transcreva → Analise',
+                'x4_title': 'Extraia → Transcreva → Analise',
                 'x4_desc': 'Pegue vídeos de QUALQUER rede social, extraia o texto exato e jogue em IAs para checar fatos, resumir ou minerar ouro da concorrência.',
-                'x5_title': '🧠 Roteiros com base na transcrição',
+                'x5_title': 'Roteiros com base na transcrição',
                 'x5_desc': 'Crie roteiros e adapte vídeos baseado nas transcrições — mais rápido pra produzir e melhorar conteúdo.',
-                'x6_title': '🎛️ Modelos Whisper pequenos e grandes',
+                'x6_title': 'Modelos Whisper pequenos e grandes',
                 'x6_desc': 'Suporte para modelos pequenos e grandes do Whisper: quanto maior o modelo, maior a precisão da transcrição.',
-                'x7_title': '⏱️ Corte por tempo (sem baixar tudo)',
+                'x7_title': 'Corte por tempo (sem baixar tudo)',
                 'x7_desc': 'Informe o tempo (início/fim) para pegar uma parte específica do vídeo, sem baixar o vídeo inteiro — com a qualidade máxima disponível na fonte.',
 
-                'shots_title': 'Screenshots',
-                'shots_sub': 'Placeholders — troque pelos prints reais em img/',
-                'shots_ph': 'Placeholder: faça upload em <span class="text-gray-300 font-semibold">img/</span> e atualize o caminho <span class="text-gray-300 font-semibold">img/screen-0X.png</span>.',
-                'shot1': 'Dashboard do downloader',
-                'shot2': 'Fonte + qualidade',
-                'shot3': 'Modo playlist / massa',
-                'shot4': 'Transcrição Whisper',
-                'shot5': 'Corte por tempo (início/fim)',
-                'shot6': 'Exportações (MP3/MP4/...)'
+                'sys_accel': 'Aceleração de Hardware Ativa',
+                'cta_grab': 'Pronto pra <span class="text-accent underline decoration-4 underline-offset-8">Baixar</span>?',
+                'cta_check1': 'Processamento Whisper AI Local (Sem Vazamento de Dados)',
+                'cta_check2': 'Proxy & Cookie Bypass Integrado',
+                'cta_check3': 'Integração Direta com FFmpeg para Exportação Bruta',
+                'cta_buy': 'Comprar Licença — R$77,00',
             },
             'es': {
+                'whisper_badge': 'Ahora con Whisper v3 Integrado',
+                'buy_nav': 'Comprar — €14,00',
+                'hero_buy': 'Comprar IronGrabber7 — €14,00',
+                'hero_buy_note': 'Compra única — paga una vez y úsalo para siempre. Este es un producto digital. Si pierdes el archivo descargado, tendrás que comprarlo de nuevo :( — así que guárdalo en tu Google Drive o en algún lugar seguro jeje.',
                 'hero_title': 'Extrae & Transcribe.<br><span class="text-red-500">Cero Nube. Cero Suscripciones.</span>',
                 'hero_sub': 'Deja de alquilar herramientas. IronGrabber7 es un extractor brutal de escritorio impulsado por IA local (Whisper). Descarga medios privados, transcribe offline y corta audio quirúrgicamente.',
-                'cta_note': 'Demo y enlaces de pago se añadirán aquí más tarde.',
 
                 'f1_title': '🧠 IA Whisper Local',
                 'f1_desc': 'Transcribe cualquier video/audio directamente en tu hardware. Sin límites de nube, sin recolección de datos. Funciona 100% offline.',
@@ -311,64 +488,71 @@
                 'pos_desc': '¿Encontraste un video viral? Descárgalo, usa Whisper para extraer el guion y adapta el texto para tus propios proyectos. La forma más rápida de iterar y generar contenido masivo.',
 
                 'more_title': 'Más funciones',
-                'x1_title': '🌐 Descarga de todos los sitios',
+                'x1_title': 'Descarga de todos los sitios',
                 'x1_desc': 'YouTube, Facebook, Instagram, Twitter/X, Vimeo y mucho más.',
-                'x2_title': '📦 Playlists / canales / páginas',
+                'x2_title': 'Playlists / canales / páginas',
                 'x2_desc': 'Descarga playlists y canales completos de YouTube. También páginas de Instagram en masa — un clic.',
-                'x3_title': '🎥 HD, 4K y formatos',
+                'x3_title': 'HD, 4K y formatos',
                 'x3_desc': '720p, 1080p, 4K, 8K. Convierte a MP3, MP4, AVI, FLV, WMV, 3GP, WEBM, MKV, WAV, AAC, M4A.',
-                'x4_title': '🧾 Extrae → Transcribe → Analiza',
+                'x4_title': 'Extrae → Transcribe → Analiza',
                 'x4_desc': 'Toma videos de CUALQUIER red social, extrae el texto exacto y úsalo en IAs externas para verificar datos, resumir o espiar a tu competencia.',
-                'x5_title': '🧠 Guiones desde transcripciones',
+                'x5_title': 'Guiones desde transcripciones',
                 'x5_desc': 'Crea guiones y adapta videos basándote en la transcripción — iteración más rápida.',
-                'x6_title': '🎛️ Modelos Whisper pequeños y grandes',
+                'x6_title': 'Modelos Whisper pequeños y grandes',
                 'x6_desc': 'Soporta modelos pequeños y grandes de Whisper: modelo más grande = mayor precisión.',
-                'x7_title': '⏱️ Corte por tiempo (sin descargar todo)',
+                'x7_title': 'Corte por tiempo (sin descargar todo)',
                 'x7_desc': 'Extrae solo un segmento (inicio/fin) manteniendo la máxima calidad disponible en la fuente.',
 
-                'shots_title': 'Capturas',
-                'shots_sub': 'Placeholders — reemplaza con tus capturas en img/',
-                'shots_ph': 'Placeholder: sube imágenes a <span class="text-gray-300 font-semibold">img/</span> y actualiza <span class="text-gray-300 font-semibold">img/screen-0X.png</span>.',
-                'shot1': 'Panel de descarga',
-                'shot2': 'Fuente + calidad',
-                'shot3': 'Modo playlist / masivo',
-                'shot4': 'Transcripción Whisper',
-                'shot5': 'Corte por tiempo (inicio/fin)',
-                'shot6': 'Exportaciones (MP3/MP4/...)'
+                'sys_accel': 'Aceleración de Hardware Activa',
+                'cta_grab': '¿Listo para <span class="text-accent underline decoration-4 underline-offset-8">Descargar</span>?',
+                'cta_check1': 'Procesamiento Whisper AI Local (Sin Fuga de Datos)',
+                'cta_check2': 'Proxy & Cookie Bypass Integrado',
+                'cta_check3': 'Integración Directa con FFmpeg para Exportación',
+                'cta_buy': 'Comprar Licencia — €14,00',
             }
         };
 
         const baseUrl = "https://renanduart3.github.io/IronGrabber7-Video-Downloader-Whisper-AI/img/";
 
+        const buyLinks = {
+            'en': '#',  // Gumroad USD link here
+            'pt': '#',  // Kiwify BRL link here
+            'es': '#'   // Gumroad EUR link here
+        };
+
         function setLang(lang) {
-            // Atualiza os textos
+            // Update all i18n texts
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if(dict[lang][key]) el.innerHTML = dict[lang][key];
             });
 
-            // Atualiza as imagens de forma dinâmica baseada no idioma
+            // Update images based on language
             let openGraphImg = lang === 'pt' ? 'open-graph-pt.png' : (lang === 'es' ? 'open-graph-es.png' : 'open-graph-en.png');
             let factImg = lang === 'pt' ? 'fact-pt.png' : (lang === 'es' ? 'fact-es.png' : 'fact-en.png');
             let posImg = lang === 'pt' ? 'pos-pt.png' : (lang === 'es' ? 'pos-es.png' : 'pos-en.png');
             
-            // Caso a imagem ptbr original seja a .jpg que você enviou antes, descomente a linha abaixo:
             if (lang === 'pt') openGraphImg = 'open-graph.jpg'; 
 
             document.getElementById('hero-img').src = baseUrl + openGraphImg;
             document.getElementById('fact-img').src = baseUrl + factImg;
             document.getElementById('pos-img').src = baseUrl + posImg;
 
-            // Esconde os botões e mostra só o correto (quando for reativar o pagamento)
-            document.getElementById('btn-en').classList.add('hidden');
-            document.getElementById('btn-pt').classList.add('hidden');
-            document.getElementById('btn-es').classList.add('hidden');
+            // Update buy links
+            const heroLink = document.getElementById('hero-buy-link');
+            if (heroLink) heroLink.href = buyLinks[lang] || '#';
+
+            // Update language button selected state
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('lang-btn-active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('lang-btn-active');
+                }
+            });
         }
 
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang && userLang.includes('pt')) setLang('pt');
-        else if (userLang && userLang.includes('es')) setLang('es');
-        else setLang('en');
+        // Always default to English
+        setLang('en');
     </script>
 </body>
 </html>

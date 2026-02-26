@@ -1,6 +1,6 @@
 # IronGrabber7: The Evolution of Media Download & Analysis
 
-IronGrabber7 is not just another "video downloader." It is a complete media reverse-engineering suite built for content creators, researchers, journalists, and digital enthusiasts who need surgical precision and total control over internet content — far surpassing generic market tools (like ByClickDownloader).
+IronGrabber7 is not just another "video downloader." It is a complete media reverse-engineering suite built for content creators, researchers, journalists, and digital enthusiasts who need surgical precision and total control over internet content — far surpassing generic market tools.
 
 While common solutions focus only on basic, raw downloading, our software raises the bar by integrating **Local Artificial Intelligence (Whisper)**, **Precise Magic Cuts**, **Security Bypass (Cookies)**, and **Deep JSON Metadata & Subtitle Extraction** — all through a professional, clean, and multilingual interface.
 
@@ -66,7 +66,7 @@ Knowing that heavy Artificial Intelligence burns GPU and CPU, we implemented "Sa
 
 Your computer goes from a mere "Desktop" to a **Data Retention and Artificial Intelligence Workstation**.
 
-| Feature | Competitor (e.g., ByClick) | IronGrabber7 |
+| Feature | Competitor (e.g. ) | IronGrabber7 |
 |---|---|---|
 | Simple clip download | ✅ | ✅ |
 | Restricted / private links | ❌ Limited | ✅ Full bypass |
